@@ -1,5 +1,6 @@
 package com.bat;
 
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -8,6 +9,7 @@ import org.springframework.web.bind.annotation.RestController;
 import javax.servlet.http.HttpServletRequest;
 import java.time.LocalDateTime;
 
+@Slf4j
 @RestController
 @SpringBootApplication
 public class BatGatewayApplication {
@@ -20,6 +22,7 @@ public class BatGatewayApplication {
     public String indexMsg(HttpServletRequest request) {
         String addr = request.getRemoteAddr();
         int port = request.getLocalPort();
+        log.info("addr:{}####port:{}", addr, port);
         return LocalDateTime.now().toString() + "####addr:" + addr + "####port:" + port;
     }
 }
