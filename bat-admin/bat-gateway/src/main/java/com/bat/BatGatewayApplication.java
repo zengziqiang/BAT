@@ -22,7 +22,10 @@ public class BatGatewayApplication {
     public String indexMsg(HttpServletRequest request) {
         String addr = request.getRemoteAddr();
         int port = request.getLocalPort();
-        log.info("addr:{}####port:{}", addr, port);
+        log.info("info####addr:{}####port:{}", addr, port);
+        log.debug("debug####addr:{}####port:{}", addr, port);
+        log.warn("warn####addr:{}####port:{}", addr, port);
+        log.error("error####addr:{}####port:{}", addr, port);
         return LocalDateTime.now().toString() + "####addr:" + addr + "####port:" + port;
     }
 }

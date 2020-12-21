@@ -10,9 +10,9 @@
         </layout>
     </appender>
     <appender name="rootDebug" class="ch.qos.logback.core.rolling.RollingFileAppender">
-        <File>${LOG_PATH}alu-backend-debug.log</File>
+        <File>${LOG_PATH}bat-admin-debug.log</File>
         <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
-            <fileNamePattern>${LOG_PATH}/alu-backend-debug-%d{yyyy-MM-dd}.%i.log</fileNamePattern>
+            <fileNamePattern>${LOG_PATH}/bat-admin-debug-%d{yyyy-MM-dd}.%i.log</fileNamePattern>
             <timeBasedFileNamingAndTriggeringPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
                 <maxFileSize>100MB</maxFileSize>
             </timeBasedFileNamingAndTriggeringPolicy>
@@ -29,9 +29,9 @@
     </appender>
 
     <appender name="rootInfo" class="ch.qos.logback.core.rolling.RollingFileAppender">
-        <File>${LOG_PATH}alu-backend-info.log</File>
+        <File>${LOG_PATH}bat-admin-info.log</File>
         <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
-            <fileNamePattern>${LOG_PATH}/alu-backend-info-%d{yyyy-MM-dd}.%i.log</fileNamePattern>
+            <fileNamePattern>${LOG_PATH}/bat-admin-info-%d{yyyy-MM-dd}.%i.log</fileNamePattern>
             <timeBasedFileNamingAndTriggeringPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
                 <maxFileSize>100MB</maxFileSize>
             </timeBasedFileNamingAndTriggeringPolicy>
@@ -48,9 +48,9 @@
     </appender>
 
     <appender name="rootWarn" class="ch.qos.logback.core.rolling.RollingFileAppender">
-        <File>${LOG_PATH}alu-backend-warn.log</File>
+        <File>${LOG_PATH}bat-admin-warn.log</File>
         <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
-            <fileNamePattern>${LOG_PATH}/alu-backend-warn-%d{yyyy-MM-dd}.%i.log</fileNamePattern>
+            <fileNamePattern>${LOG_PATH}/bat-admin-warn-%d{yyyy-MM-dd}.%i.log</fileNamePattern>
             <timeBasedFileNamingAndTriggeringPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
                 <maxFileSize>100MB</maxFileSize>
             </timeBasedFileNamingAndTriggeringPolicy>
@@ -67,9 +67,9 @@
     </appender>
 
     <appender name="rootError" class="ch.qos.logback.core.rolling.RollingFileAppender">
-        <File>${LOG_PATH}alu-backend-error.log</File>
+        <File>${LOG_PATH}bat-admin-error.log</File>
         <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
-            <fileNamePattern>${LOG_PATH}/alu-backend-error-%d{yyyy-MM-dd}.%i.log</fileNamePattern>
+            <fileNamePattern>${LOG_PATH}/bat-admin-error-%d{yyyy-MM-dd}.%i.log</fileNamePattern>
             <timeBasedFileNamingAndTriggeringPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
                 <maxFileSize>100MB</maxFileSize>
             </timeBasedFileNamingAndTriggeringPolicy>
@@ -86,9 +86,9 @@
     </appender>
 
     <appender name="testInfo" class="ch.qos.logback.core.rolling.RollingFileAppender">
-        <File>${LOG_PATH}alu-backend-test.log</File>
+        <File>${LOG_PATH}bat-admin-test.log</File>
         <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
-            <fileNamePattern>${LOG_PATH}/alu-backend-test-%d{yyyy-MM-dd}.%i.log</fileNamePattern>
+            <fileNamePattern>${LOG_PATH}/bat-admin-test-%d{yyyy-MM-dd}.%i.log</fileNamePattern>
             <timeBasedFileNamingAndTriggeringPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
                 <maxFileSize>100MB</maxFileSize>
             </timeBasedFileNamingAndTriggeringPolicy>
@@ -103,11 +103,14 @@
         <root level="info">
             <!-- 本地测试时使用，将日志打印到控制台,实际部署时请注释掉 -->
             <appender-ref ref="STDOUT"/>
-            <appender-ref ref="testInfo"/>
+
+            <!--    区分日志级别进行存储日志      -->
             <appender-ref ref="rootDebug"/>
             <appender-ref ref="rootInfo"/>
             <appender-ref ref="rootWarn"/>
             <appender-ref ref="rootError"/>
+            <!--     不发日志级别，全部日志汇总在一起       -->
+            <appender-ref ref="testInfo"/>
         </root>
     </springProfile>
 
